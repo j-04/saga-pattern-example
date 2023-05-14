@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-payment-table
+      author: Sergey Dragosh
+      changes:
+        - createTable:
+            tableName: payment
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: amount
+                  type: decimal(10,2)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: source_account_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+                    - foreignKeyName: fk_source_account_id
+                    - referencedTableName: account
+                    - referencedColumnName: id
+              - column:
+                  name: target_account_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+                    - foreignKeyName: fk_target_account_id
+                    - referencedTableName: account
+                    - referencedColumnName: id
+              - column:
+                  name: status
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    - nullable: false
