@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-account-table
+      author: Sergey Dragosh
+      changes:
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: balance
+                  type: decimal(10,2)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    - nullable: false

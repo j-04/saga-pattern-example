@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASS}
+    driver-class-name: org.postgresql.Driver
+    minimum-idle: 5
+    connection-timeout: 60000
+    initFailTimeout: 60
+  liquibase:
+    default-schema: ${DATABASE_SCHEMA}
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+  application:
+    name: account-service
+server:
+  port: 8081
+
+springdoc:
+  swagger-ui:
+    path: /swagger
