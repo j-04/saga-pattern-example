@@ -1,0 +1,3 @@
+rootProject.name = 'saga-distributed-transactions-example'
+include 'account-service'
+include 'payment-service'
